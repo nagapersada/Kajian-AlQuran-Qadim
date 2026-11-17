@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#071512">
+<title>Deka Sonjaya - Modern Spiritual (Kajian Tauhid & Ma'rifat)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--gold:#c9a86a;--gold2:#e8d5a8;--green:#0f2e26;--bg:#071512;--muted:#c8c0ad}
+html,body{width:100%;height:100%;height:100vh;height:100dvh;height:100svh;overflow:hidden;background:#000;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#fff;overscroll-behavior:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{display:block;max-width:100%}
+.page{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;height:100svh;min-height:100dvh;display:none;overflow:hidden}
+.page.active{display:flex;flex-direction:column}
+/* ===== PEMBUKA - DIBUAT DARI KODE, BUKAN GAMBAR ===== */
+#opening{background:radial-gradient(ellipse at 50% 0%,#123a2d 0%,#071512 55%,#04100c 100%);overflow:hidden}
+.open-frame{position:absolute;inset:10px;border:1px solid rgba(201,168,106,.75);border-radius:4px;pointer-events:none}
+.open-frame:before{content:"";position:absolute;inset:5px;border:1px solid rgba(201,168,106,.35);border-radius:2px}
+.open-corner{position:absolute;width:42px;height:42px;border:2px solid var(--gold2);pointer-events:none}
+.open-corner.tl{top:10px;left:10px;border-right:none;border-bottom:none}
+.open-corner.tr{top:10px;right:10px;border-left:none;border-bottom:none}
+.open-corner.bl{bottom:10px;left:10px;border-right:none;border-top:none}
+.open-corner.br{bottom:10px;right:10px;border-left:none;border-top:none}
+.open-orn{position:absolute;font-size:34px;color:rgba(201,168,106,.25);pointer-events:none;line-height:1}
+.open-orn.o1{top:22px;left:22px}
+.open-orn.o2{top:22px;right:22px;transform:scaleX(-1)}
+.open-orn.o3{bottom:22px;left:22px;transform:scaleY(-1)}
+.open-orn.o4{bottom:22px;right:22px;transform:scale(-1)}
+.open-content{position:relative;z-index:2;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(18px + env(safe-area-inset-top)) 26px calc(18px + env(safe-area-inset-bottom));gap:8px;overflow-y:auto}
+.open-top{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold2)}
+@keyframes kitabIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes kitabShine{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes kitabGlow{0%,100%{box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 0 rgba(232,213,168,0)}50%{box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 22px rgba(232,213,168,.55)}}
+@keyframes mppBlink{0%,100%{opacity:1;transform:scale(1);text-shadow:0 0 10px rgba(255,228,94,.9),0 0 22px rgba(255,228,94,.55)}50%{opacity:.35;transform:scale(.97);text-shadow:0 0 2px rgba(255,228,94,.2)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.kitab-badge{display:flex;flex-direction:column;align-items:center;gap:8px;margin:8px 0 2px}
+.kitab-main{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(110deg,#c9a86a 20%,#fff6d8 38%,#e8d5a8 50%,#c9a86a 68%);background-size:200% 100%;color:#1a1408;font-weight:900;letter-spacing:.18em;font-size:13px;padding:11px 22px;border-radius:4px;border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 26px rgba(0,0,0,.45);animation:kitabIn .7s .15s ease both,kitabShine 3.2s 1.2s linear infinite,kitabGlow 2.8s 1.2s ease-in-out infinite}
+.kitab-main i{width:6px;height:6px;border-radius:50%;background:#1a1408;display:block}
+.masterpiece{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.35);border:1px solid rgba(201,168,106,.6);padding:9px 13px;border-radius:999px}
+.masterpiece b{color:var(--gold2)}
+.mpp{display:inline-block;color:#ffe45e;font-weight:900;letter-spacing:.28em;animation:mppBlink 1.15s ease-in-out infinite}
+.open-name{font-family:Georgia,serif;font-size:clamp(36px,9vw,62px);line-height:.95;font-weight:600;letter-spacing:-.02em;animation:fadeInUp .7s .45s ease both}
+.open-sub{font-size:clamp(14px,4vw,19px);letter-spacing:.28em;text-transform:uppercase;color:#f2e6c2;animation:fadeInUp .7s .55s ease both}
+.open-line{width:68px;height:1px;background:var(--gold);margin:8px 0 2px}
+.open-big{font-family:Georgia,serif;font-size:clamp(34px,10vw,58px);line-height:1.02;font-weight:700;color:#f5e3a8;text-shadow:0 4px 22px rgba(0,0,0,.5);animation:fadeInUp .7s .65s ease both}
+.open-big2{font-family:Georgia,serif;font-size:clamp(22px,6.5vw,34px);line-height:1.2;color:#fff8dc;animation:fadeInUp .7s .75s ease both}
+.open-mot{max-width:560px;font-size:clamp(14px,3.8vw,17px);line-height:1.65;color:#efe8d6;font-style:italic;margin-top:6px;animation:fadeInUp .7s .85s ease both}
+.open-important{max-width:560px;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,106,.45);border-radius:12px;padding:10px 14px;font-size:clamp(12.5px,3.4vw,14.5px);line-height:1.6;color:#f5eedd;animation:fadeInUp .7s .9s ease both}
+.open-important b{color:#fff}
+.btn-enter{margin-top:10px;width:min(100%,360px);height:56px;flex:0 0 56px;border-radius:999px;background:linear-gradient(180deg,#e8d5a8,#c9a86a);color:#1a1408;font-weight:800;font-size:16px;letter-spacing:.04em;box-shadow:0 14px 30px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;gap:8px;animation:fadeInUp .7s 1s ease both}
+.btn-enter:active{transform:scale(.98)}
+.btn-enter small{font-size:12px;font-weight:800;opacity:.75;letter-spacing:.08em}
+.open-foot{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.72);margin-top:6px;text-transform:uppercase;animation:fadeInUp .7s 1.05s ease both}
+#main{background:var(--bg)}
+.topbar{height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 14px;background:rgba(15,46,38,.97);border-bottom:1px solid rgba(201,168,106,.28);z-index:20}
+.top-left{display:flex;align-items:center;gap:10px;min-width:0}
+.top-logo{width:38px;height:38px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;cursor:pointer}
+.top-title{line-height:1.1;min-width:0}
+.top-title b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.top-title span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);white-space:nowrap}
+.top-kitab{font-size:10px;letter-spacing:.18em;font-weight:800;background:var(--gold);color:#1a1408;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.top-actions{display:flex;gap:6px;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:18px}
+.icon-btn.active{background:var(--gold);color:#1a1408}
+.main-body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.progress{height:4px;background:rgba(255,255,255,.12);flex:0 0 4px}
+.progress i{display:block;height:100%;background:var(--gold);width:10%;transition:width .35s}
+.slide-meta{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.slide-meta b{color:var(--gold2);font-size:12px}
+.slide-wrap{flex:1;min-height:0;overflow:hidden;position:relative;touch-action:pan-y}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+
+/* ===== PRESISI UKURAN & LETAK GAMBAR ===== */
+.slide-img-box{
+  width:100%;
+  height:40%;
+  flex:0 0 40%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 16px 38px;
+  background:radial-gradient(ellipse at 50% 42%,#184c3c 0%,#0b241d 65%,#061410 100%);
+  border-bottom:1px solid rgba(201,168,106,.22);
+  overflow:hidden;
+}
+.slide-img-box:before{
+  content:"❖";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:64px;
+  color:rgba(201,168,106,.16);
+  pointer-events:none;
+}
+.slide-img-box img{
+  position:relative;
+  z-index:1;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center center;
+  border-radius:10px;
+  border:1px solid rgba(201,168,106,.35);
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+  background:rgba(4,16,12,.55);
+}
+.slide-img-box:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,transparent 84%,rgba(7,21,18,.88) 100%);
+  pointer-events:none;
+}
+.slide-img-badge{
+  position:absolute;
+  left:50%;
+  bottom:8px;
+  transform:translateX(-50%);
+  z-index:3;
+  max-width:calc(100% - 28px);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  background:rgba(7,21,18,.82);
+  border:1px solid rgba(201,168,106,.38);
+  color:var(--gold2);
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  backdrop-filter:blur(6px);
+}
+
+.slide-text{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 18px 14px;scrollbar-width:thin}
+.slide-text h2{font-family:Georgia,serif;font-size:clamp(22px,6vw,30px);line-height:1.15;margin-bottom:8px}
+.slide-text h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:14px 0 6px}
+.slide-text p{font-size:clamp(15px,4.1vw,17px);line-height:1.75;color:#e9e4d6;margin-bottom:10px}
+.slide-text blockquote{margin:10px 0;padding:12px 14px;border-left:3px solid var(--gold);background:rgba(201,168,106,.10);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.65;color:#f5eedd}
+.slide-text blockquote i{color:var(--gold2)}
+.slide-text ul,.slide-text ol{margin:6px 0 10px 18px;line-height:1.7;font-size:15px;color:#e9e4d6}
+.slide-text li{margin-bottom:6px}
+.slide-text b{color:#fff}
+.hl-gold{color:#ffd76a;font-weight:800}
+.hl-green{color:#7ef0a8;font-weight:800}
+.hl-blue{color:#7ec8ff;font-weight:800}
+.hl-orange{color:#ffb26b;font-weight:800}
+.hl-pink{color:#ff9ec6;font-weight:800}
+.hl-yellow{color:#ffe45e;font-weight:800}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.legend span{font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+.player{flex:0 0 auto;background:#0c231d;border-top:1px solid rgba(201,168,106,.28);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.player-row{display:flex;align-items:center;gap:10px}
+.time{font-size:12px;min-width:42px;text-align:center;color:#d9d2bd;font-variant-numeric:tabular-nums}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:rgba(255,255,255,.18);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#e8d5a8;border:3px solid #0f2e26;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#e8d5a8;border:3px solid #0f2e26}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.ctrl-group{display:flex;align-items:center;gap:8px}
+.nav-btn{height:44px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px}
+.nav-btn:disabled{opacity:.35}
+.play-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,#e8d5a8,#c9a86a);color:#1a1408;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.speed-btn{height:36px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:700}
+.audio-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:6px}
+.audio-label b{color:#fff}
+.toc{position:absolute;inset:0;z-index:30;display:none;background:rgba(0,0,0,.55)}
+.toc.open{display:block}
+.toc-panel{position:absolute;right:0;top:0;bottom:0;width:min(92vw,360px);background:#0f2e26;border-left:1px solid rgba(201,168,106,.3);display:flex;flex-direction:column;overflow:hidden}
+.toc-head{padding:16px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center}
+.toc-head b{font-family:Georgia,serif;font-size:20px}
+.toc-list{flex:1;overflow-y:auto;padding:10px}
+.toc-item{width:100%;text-align:left;display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;margin-bottom:4px}
+.toc-item.active{background:rgba(201,168,106,.16);border:1px solid rgba(201,168,106,.35)}
+.toc-num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:12px;font-weight:800}
+.toc-item.active .toc-num{background:var(--gold);color:#1a1408}
+.toc-item span{font-size:13.5px;line-height:1.4;color:#e9e4d6}
+.toc-item small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+@media (orientation:portrait){
+  .slide{flex-direction:column}
+  .slide-img-box{width:100%;height:40%;flex:0 0 40%;padding:10px 16px 38px;border-bottom:1px solid rgba(201,168,106,.22);border-right:none}
+}
+@media (orientation:landscape) and (max-height:520px){
+  .topbar{height:52px;flex-basis:52px}
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:10px 14px 36px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:14px 18px}
+  .player{padding-top:8px}
+  .open-content{justify-content:center;padding-top:10px;padding-bottom:10px;gap:5px}
+  .open-big{font-size:32px}
+  .open-big2{font-size:20px}
+  .open-important,.open-mot{display:none}
+}
+@media (orientation:landscape) and (min-height:521px){
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:18px 20px 44px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:22px 28px}
+}
+@media (min-width:900px){
+  .main-body{max-width:1100px;margin:0 auto;width:100%}
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:20px 24px 46px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:22px 32px}
+  .slide-text p{font-size:17px}
+  .player{max-width:1100px;margin:0 auto;width:100%}
+  .topbar{padding-left:22px;padding-right:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .kitab-main,.mpp{animation:none}
+}
+</style>
+</head>
+<body>
+<section id="opening" class="page active">
+  <div class="open-frame"></div>
+  <div class="open-corner tl"></div><div class="open-corner tr"></div><div class="open-corner bl"></div><div class="open-corner br"></div>
+  <div class="open-orn o1">❖</div><div class="open-orn o2">❖</div><div class="open-orn o3">❖</div><div class="open-orn o4">❖</div>
+  <div class="open-content">
+    <div class="open-top">Deka Sonjaya • Modern Spiritual</div>
+    <div class="kitab-badge">
+      <div class="kitab-main"><i></i> KAJIAN MA’RIFAT • MASTERPIECE <i></i></div>
+      <div class="masterpiece">★ <b>MASTERPIECE</b> • <span class="mpp">MATERI PALING PENTING</span> ★</div>
+    </div>
+    <div class="open-name">Deka Sonjaya</div>
+    <div class="open-sub">Modern Spiritual</div>
+    <div class="open-line"></div>
+    <div class="open-big">Tauhid &amp; Ma’rifat</div>
+    <div class="open-big2">— Rahasia Penciptaan, Nur Muhammad &amp;<br>Al-Qur’an yang Qadim —</div>
+    <p class="open-mot">“Barang siapa mengenal dirinya sendiri, maka ia<br>mengenal Tuhannya.”</p>
+    <div class="open-important"><b>Kajian Tauhid Murni • Rahasia Penciptaan &amp; Pengenalan Diri.</b><br>10 Slide • Materi Mendalam • Refleksi • Panduan Spiritual</div>
+    <button class="btn-enter" id="enterBtn">Masuk <small>— Bismillah</small> &nbsp; →</button>
+    <div class="open-foot">Kajian Ma’rifat • 10 Slide • Full Screen</div>
+  </div>
+</section>
+<section id="main" class="page">
+  <header class="topbar">
+    <div class="top-left">
+      <img class="top-logo" id="logoHome" src="logo.png" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2231%22 fill=%22%230f2e26%22 stroke=%22%23c9a86a%22 stroke-width=%222%22/%3E%3Ctext x=%2232%22 y=%2239%22 font-family=%22Georgia,serif%22 font-size=%2222%22 font-weight=%22bold%22 fill=%22%23e8d5a8%22 text-anchor=%22middle%22%3EDS%3C/text%3E%3C/svg%3E';" alt="Logo - Kembali ke Pembuka" title="Kembali ke Pembuka - Tetap Full Screen">
+      <div class="top-title"><b>Deka Sonjaya</b><span>Modern Spiritual</span></div>
+    </div>
+    <div class="top-actions"><span class="top-kitab">KAJIAN MA’RIFAT</span><button class="icon-btn" id="tocBtn" title="Daftar Isi">☰</button></div>
+  </header>
+  <div class="main-body">
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="slide-meta"><span id="slideKicker">Bagian 1 • Pembuka, Pengenalan Diri Allah & Perbendaharaan Tersembunyi</span><b id="slideCount">1 / 10</b></div>
+    <div class="slide-wrap" id="slideWrap"></div>
+    <div class="player">
+      <div class="player-row">
+        <span class="time" id="curTime">0:00</span>
+        <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Geser audio">
+        <span class="time" id="durTime">0:00</span>
+      </div>
+      <div class="controls">
+        <div class="ctrl-group"><button class="nav-btn" id="prevBtn">← Sebelumnya</button></div>
+        <div class="ctrl-group"><button class="speed-btn" id="speedBtn">1x</button><button class="play-btn" id="playBtn">▶</button></div>
+        <div class="ctrl-group"><button class="nav-btn" id="nextBtn">Berikutnya →</button></div>
+      </div>
+      <div class="audio-label">Audio: <b id="audioLabel">slide1.mp3</b> • Geser bar untuk ke menit yang diinginkan</div>
+    </div>
+    <div class="toc" id="toc"><div class="toc-panel"><div class="toc-head"><b>Daftar Isi (10 Bagian)</b><button class="icon-btn" id="closeToc">✕</button></div><div class="toc-list" id="tocList"></div></div></div>
+  </div>
+</section>
+<audio id="audio" preload="auto" playsinline></audio>
+<script>
+const LEGEND=`<div class="legend"><span style="color:#ffd76a">● ZAT / TAUHID MURNI</span><span style="color:#7ef0a8">● SIFAT / TAREKAT</span><span style="color:#7ec8ff">● NUR MUHAMMAD / RUH</span><span style="color:#ffb26b">● ZAHIR / SYARIAT</span><span style="color:#ff9ec6">● BATIN / HAKIKAT</span></div>`;
+
+const slides=[
+{
+  t:"Pembuka & Awal Tajalli Ketuhanan",
+  k:"Bagian 1 • Pembuka, Pengenalan Diri Allah & Perbendaharaan Tersembunyi",
+  h:"Pembuka Kajian, Pengenalan Diri Allah & Rahasia Tajalli",
+  c:LEGEND+`<h3>Assalamu’alaikum, Selamat Datang di Kajian Tauhid & Ma’rifat</h3>
+  <p><i>Bismillahirrahmanirrahim.</i><br>Assalamu’alaikum warahmatullahi wabarakatuh.</p>
+  <p>Alhamdulillah, segala puji dan syukur senantiasa kita panjatkan ke hadirat Allah SWT. Shalawat serta salam semoga selalu tercurah kepada junjungan kita, Nabi Muhammad SAW.</p>
+  <p>Saudaraku yang dirahmati Allah, perkenalkan, saya <span class="hl-gold">Deka Sonjaya.</span> Izinkan saya menyampaikan kajian kita pada malam hari ini dengan satu tujuan mulia: agar kita <span class="hl-green">semakin mengenal Tuhan kita secara hakiki, sekaligus mengenal sejatinya diri kita sendiri.</span></p>
+  <p>Mari kita awali majelis ilmu ini dengan membaca basmalah bersama-sama.</p>
+  <blockquote><i>Bismillahirrahmanirrahim.</i><br><b>Pembuka Kajian</b></blockquote>
+  <h3>Allah Memperkenalkan Diri-Nya kepada Nur Muhammad</h3>
+  <p>Pada mulanya, belum ada apa-apa dan belum ada siapa-siapa. Yang wujud hanyalah <span class="hl-gold">Allah semata</span>. Kemudian Allah memperkenalkan diri-Nya kepada <span class="hl-blue">Nur Muhammad</span>:</p>
+  <blockquote><i>“Sesungguhnya Aku ini adalah Allah. Aku ini adalah Rabbmu. Tidak ada yang wujud dan nyata, melainkan Aku.”</i></blockquote>
+  <p>Pada detik itulah Muhammad mengerti siapa Tuhannya dan siapa dirinya, lalu menjawab dengan penuh ketundukan:</p>
+  <blockquote><i>“Engkau adalah Rabbku, dan aku adalah hamba-Mu.”</i></blockquote>
+  <p>Dari dialog azali inilah kita belajar membedakan antara <span class="hl-yellow">Zat dan Sifat</span>, <span class="hl-green">Abid dan Ma’bud</span>, <span class="hl-orange">Qadim dan Baharu</span>, serta <span class="hl-pink">diri yang batin dan diri yang zahir</span>.</p>
+  <blockquote><i>“Sesungguhnya Aku ini adalah Allah, tidak ada Tuhan selain Aku, maka sembahlah Aku.”</i><br><b>Al-Qur’an, QS. Thaha: 14</b></blockquote>
+  <h3>Allah Adalah Perbendaharaan yang Tersembunyi</h3>
+  <p>Allah berfirman bahwa diri-Nya adalah <span class="hl-gold">perbendaharaan yang tersembunyi</span>. Mengapa tersembunyi? Karena pada saat itu belum ada makhluk apa pun yang menyaksikan-Nya.</p>
+  <p>Rasulullah SAW menjelaskan bahwa pada masa azali tersebut, Allah berada dalam <span class="hl-yellow">kekosongan yang murni dan kehampaan yang mutlak</span>—tidak diliputi oleh ruang, di atas-Nya tidak ada udara, di bawah-Nya tidak ada udara, dan tidak diliputi oleh apa pun. Sebab hanya Dia semata yang ada; tiada sesuatu pun yang bersama maupun beserta Allah.</p>
+  <blockquote><i>“Kuntu kanzan makhfiyyan, fa ahbabtu an u’rafa.”</i><br><b>Hadis Qudsi</b> — <span class="hl-gold">“Aku adalah perbendaharaan yang tersembunyi, lalu Aku ingin dikenal.”</span></blockquote>
+  <blockquote><i>“Dialah Yang Awal dan Yang Akhir, Yang Zahir dan Yang Batin.”</i><br><b>Al-Qur’an, QS. Al-Hadid: 3</b></blockquote>
+  <h3>Mengapa Allah Menciptakan Sesuatu? (Tajalli)</h3>
+  <p>Allah berkehendak dalam diri-Nya sendiri: <i>“Jika Aku ini Tuhan dan Aku ini Zat, maka siapa yang akan menjadi hamba, dan siapa yang akan menjadi sifat?”</i></p>
+  <p>Maka Allah menzahirkan sesuatu dari diri-Nya sendiri, bukan dari luar diri-Nya. Dalam istilah hakikat, peristiwa ini disebut <span class="hl-pink">Tajalli</span>—yakni Allah menampakkan diri-Nya. Penampakan diri Allah itulah yang disebut <span class="hl-blue">Nur Muhammad</span>.</p>
+  <p>Allah berfirman kepada Nur Muhammad: <span class="hl-gold">“Aku jadikan dirimu sebagai cermin untuk memandang rupa-Ku, karena Aku ingin melihat diri-Ku di luar diri-Ku.”</span> Secara hakikat, dirinya bukanlah dirinya sendiri, melainkan wujud nyata dari rupa Allah: <i>“Aku yang dirinya, dan dirinya itu sebenarnya adalah Aku.”</i></p>
+  <blockquote><i>“Dan Dia bersama kamu di mana saja kamu berada.”</i><br><b>Al-Qur’an, QS. Al-Hadid: 4</b></blockquote>
+  <blockquote><i>“Ke mana saja kamu menghadap, di situlah wajah Allah.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 115</b></blockquote>`
+},
+{
+  t:"Ujian Nur Muhammad & Tafakur Qalbu",
+  k:"Bagian 2 • Penyatuan Zat & Sifat serta Kaidah Pengenalan",
+  h:"Ujian Nur Muhammad, Penyatuan Zat-Sifat & Tafakur ke Dalam Qalbu",
+  c:LEGEND+`<h3>Ujian Pertama: Siapa Zat dan Siapa Sifat?</h3>
+  <p>Allah menguji <span class="hl-blue">Nur Muhammad</span> dengan bertanya: <i>“Siapa dirimu dan siapa diri-Ku?”</i><br>Nur Muhammad menjawab: <i>“Engkau adalah Engkau, dan aku adalah aku.”</i></p>
+  <p>Hingga tiga kali pertanyaan yang sama diajukan, jawabannya tetap serupa: <span class="hl-yellow">“Ana ana, anta anta — Aku ya aku, Engkau ya Engkau.”</span></p>
+  <p>Maka Allah berfirman: <i>“Jika Engkau yang Tuhan dan Engkau yang Zat, sementara Aku yang sifat, Aku yang makhluk, dan Aku yang hamba, maka menghilanglah engkau. Sirna dan lenyaplah engkau dari hadapan-Ku.”</i></p>
+  <p>Seketika Nur Muhammad pun hilang dan lenyap. Padahal Nur Muhammad berada di dalam rahasia Allah, dan Nur Allah meliputi dirinya. Namun saat itu Nur Muhammad belum mengenal Tuhannya dan masih terhijab dari rahasia dirinya sendiri.</p>
+  <blockquote><i>“Segala sesuatu akan binasa, kecuali wajah-Nya.”</i><br><b>Al-Qur’an, QS. Al-Qasas: 88</b></blockquote>
+  <h3>Allah Mencari, Lalu Allah yang Hilang ke Dalam Rahasia-Nya</h3>
+  <p>Ketika Nur Muhammad lenyap, Allah mencari dan menemuinya, sebab Allah lebih dekat kepadanya daripada urat nadi di lehernya sendiri.</p>
+  <p>Setelah ditemukan, Allah berfirman: <span class="hl-gold">“Sekarang engkau yang mencari Aku. Engkau yang akan menemui Aku, dan Aku yang akan hilang serta lenyap di hadapanmu.”</span></p>
+  <p>Maka Allah pun lenyap dan melebur. Ke mana lenyapnya? Perumpamaannya seperti <span class="hl-green">pisau dan sarungnya</span>: setelah pisau selesai membuat sarungnya, pisau itu pun masuk ke dalam sarungnya sendiri. Begitulah Allah; setelah menzahirkan Nur Muhammad, Allah lenyap menjadi rahasia di dalam Nur Muhammad itu sendiri, sebab <span class="hl-pink">Zat dan Sifat tidak pernah berpisah</span>.</p>
+  <blockquote><i>“Dan Kami lebih dekat kepadanya daripada urat lehernya.”</i><br><b>Al-Qur’an, QS. Qaf: 16</b></blockquote>
+  <h3>Kunci Ma’rifat: Kenali Sifat untuk Mengenal Zat</h3>
+  <p>Untuk mengenal <span class="hl-gold">Zat</span>, kenalilah <span class="hl-green">Sifat</span>, karena Sifat adalah kenyataan dari Zat. Untuk mencari yang <span class="hl-pink">batin</span>, carilah pada yang <span class="hl-orange">zahir</span>, karena yang zahir adalah kenyataan dari yang batin. Untuk mencari <span class="hl-gold">Allah</span>, carilah pada <span class="hl-blue">Muhammad</span>, karena Muhammad adalah kenyataan Allah.</p>
+  <p>Perumpamaannya seperti <b>botol dan plastiknya</b>:</p>
+  <ul>
+    <li><b><span class="hl-gold">Plastik</span></b> adalah <b>Zat</b> (Allah).</li>
+    <li><b><span class="hl-green">Botol</span></b> adalah <b>Sifat</b> (Muhammad).</li>
+  </ul>
+  <p>Plastik senantiasa menyertai botol ke mana pun botol itu diletakkan, karena botol adalah penampakan dari plastik. Demikian pula Allah senantiasa beserta Muhammad di mana pun berada: <span class="hl-yellow">“Di mana ada kamu, di situlah nyatanya Aku.”</span></p>
+  <blockquote><i>“Dan Dia bersama kamu di mana saja kamu berada.”</i><br><b>Al-Qur’an, QS. Al-Hadid: 4</b></blockquote>
+  <blockquote><i>“Barang siapa yang menaati Rasul, maka sesungguhnya ia telah menaati Allah.”</i><br><b>Al-Qur’an, QS. An-Nisa’: 80</b></blockquote>
+  <h3>Nur Muhammad Mencari Allah ke Segala Penjuru</h3>
+  <p>Setelah Allah menjadi rahasia di dalam dirinya, Nur Muhammad mencari Tuhan ke segala penjuru: ke barat, timur, utara, selatan, atas, bawah, depan, belakang, kiri, kanan, hingga luar dan dalam—namun tiada ditemukan, karena Allah telah menjadi rahasia dirinya sendiri.</p>
+  <p>Dalam kelelahan mencari keluar, Nur Muhammad akhirnya duduk diam dan <span class="hl-green">bertafakur ke dalam dirinya</span>. Saat itulah ia terkejut mendengar kalam batin bergema di dalam qalbunya: <span class="hl-gold">“Allah... Allah...”</span></p>
+  <p>Allah pun menjelaskan: <i>“Sesungguhnya diri-Ku ini adalah Allah. Tidak ada yang wujud dan nyata pada dirimu, melainkan Aku.”</i> Barulah Muhammad sadar lalu menyahut: <span class="hl-pink">“Akulah Muhammad hamba-Mu, kenyataan-Mu, wujud-Mu, dan kezahiran-Mu.”</span> Jelaslah bahwa Zat dan Sifat tidak dapat dipisahkan; Allah dan Muhammad adalah <b>Ahad dan Esa</b>.</p>
+  <blockquote><i>“Katakanlah: Dialah Allah, Yang Maha Esa.”</i><br><b>Al-Qur’an, QS. Al-Ikhlas: 1</b></blockquote>
+  <blockquote><i>“Sesungguhnya Aku ini adalah Allah.”</i><br><b>Al-Qur’an, QS. Thaha: 14</b></blockquote>`
+},
+{
+  t:"Penciptaan Ruh & Baiat Azali",
+  k:"Bagian 3 • Dua Kalimat Syahadat & Dua Janji Suci Ruh",
+  h:"Penciptaan Ruh, Baiat Azali & Dua Janji Suci kepada Allah",
+  c:LEGEND+`<h3>Allah Menciptakan Ruh dan Mengambil Janji Kesaksian</h3>
+  <p>Setelah <span class="hl-yellow">125.000 tahun</span> sejak Allah memperkenalkan diri-Nya kepada Nur Muhammad, barulah Allah menciptakan <span class="hl-blue">ruh</span> dari Nur Muhammad. Di alam azali itulah Allah mengambil sumpah setia kepada sekalian ruh: <i>“Bukankah Aku ini adalah Rabbmu?”</i> Sekalian ruh menjawab: <i>“Benar ya Allah, Engkau adalah Tuhan kami, dan kami bersaksi.”</i></p>
+  <p>Dalam baiat agung tersebut lahirlah <span class="hl-gold">dua kalimat syahadat</span>:</p>
+  <ol>
+    <li><b><span class="hl-gold">Syahadat Tauhid (diucapkan oleh ruh):</span></b> <i>“Aku bersaksi tidak ada Tuhan yang wujud dan nyata melainkan Engkau.”</i></li>
+    <li><b><span class="hl-green">Syahadat Rasul (diucapkan oleh Allah):</span></b> <i>“Aku bersaksi bahwa Muhammad adalah hamba dan utusan-Ku.”</i></li>
+  </ol>
+  <p>Muhammad menyaksikan Allah, dan Allah menyaksikan Muhammad; yang zahir menyaksikan yang batin, dan yang batin menyaksikan yang zahir.</p>
+  <blockquote><i>“Bukankah Aku ini Tuhanmu? Mereka menjawab: Betul, kami bersaksi.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 172</b></blockquote>
+  <blockquote><i>“Sesungguhnya orang-orang yang berjanji setia kepadamu, sesungguhnya mereka berjanji setia kepada Allah.”</i><br><b>Al-Qur’an, QS. Al-Fath: 10</b></blockquote>
+  <h3>Dua Janji Suci Ruh kepada Allah SWT</h3>
+  <p>Di hadapan Allah SWT, setiap ruh hanya mengikat <span class="hl-gold">dua janji suci</span>:</p>
+  <ol>
+    <li><b><span class="hl-gold">Janji Pertama:</span></b> Mengakui Allah sebagai satu-satunya Rabb dan Tuhan yang disembah.</li>
+    <li><b><span class="hl-green">Janji Kedua:</span></b> Tunduk dan patuh menjalankan seluruh ketetapan takdir yang Allah gariskan kepadanya, yang meliputi empat perkara: <span class="hl-yellow">Langkah, Rezeki, Pertemuan, dan Maut</span>.</li>
+  </ol>
+  <p>Sikap ruh di hadapan seluruh ketetapan-Nya adalah kepatuhan mutlak: <span class="hl-pink">“Kami dengar dan kami patuhi.”</span></p>
+  <blockquote><i>“Bukankah Aku ini Tuhanmu?”</i> (<b>QS. Al-A’raf: 172</b>)<br><i>“Kami dengar dan kami patuhi.”</i> (<b>QS. Al-Baqarah: 285</b>)</blockquote>
+  <blockquote><i>“Jika Allah menimpakan kemudharatan kepadamu, maka tidak ada yang dapat menghilangkannya kecuali Dia.”</i><br><b>Al-Qur’an, QS. Al-An’am: 17</b></blockquote>`
+},
+{
+  t:"Empat Unsur, Malaikat & Jasad Adam",
+  k:"Bagian 4 • Proses Penciptaan & Kedudukan Adam sebagai Cermin Tuhan",
+  h:"Empat Unsur Alam, Tugas Empat Malaikat & Penciptaan Jasad Adam",
+  c:LEGEND+`<h3>Nur Muhammad Menemui Empat Unsur Bahan Penciptaan</h3>
+  <p>Sebelum menciptakan Adam, Allah memerintahkan Nur Muhammad meninjau empat unsur alam sebagai bakal penciptaan manusia:</p>
+  <ol>
+    <li><b><span class="hl-orange">Api:</span></b> Bersikap sombong dan bermegah-megah. Setelah ditegur Nur Muhammad, api pun sadar: <i>“Yang mulia adalah Allah, aku hanyalah utusan-Nya.”</i></li>
+    <li><b><span class="hl-green">Angin:</span></b> Membanggakan kekuatan dan keperkasaannya. Setelah ditegur, angin pun tunduk: <i>“Yang suci adalah Allah, aku hanyalah hamba dan utusan-Nya.”</i></li>
+    <li><b><span class="hl-blue">Air:</span></b> Merasa bangga dengan dirinya sendiri, hingga akhirnya sadar setelah ditegur.</li>
+    <li><b><span class="hl-gold">Tanah:</span></b> Berbeda dari ketiganya. Tanah bersifat <span class="hl-yellow">sabar, istiqamah, tenang, qanaah, dan patuh</span>, tanpa sedikit pun menonjolkan kemegahan.</li>
+  </ol>
+  <p>Nur Muhammad memujinya: <i>“Engkau adalah unsur yang sabar, istiqamah, dan tenang.”</i> Karena sifat qanaah dan kepatuhannya itulah Allah memilih tanah sebagai unsur dominan pembentuk jasad Adam.</p>
+  <blockquote><i>“Dan sesungguhnya Kami telah menciptakan manusia dari tanah liat kering yang berasal dari lumpur hitam yang diberi bentuk.”</i><br><b>Al-Qur’an, QS. Al-Hijr: 26</b></blockquote>
+  <blockquote><i>“Yang membuat segala sesuatu yang Dia ciptakan sebaik-baiknya dan Dia memulai penciptaan manusia dari tanah.”</i><br><b>Al-Qur’an, QS. As-Sajdah: 7</b></blockquote>
+  <h3>Empat Malaikat Diutus Mengambil Segumpal Tanah</h3>
+  <p>Allah mengutus empat malaikat secara bergantian untuk mengambil segumpal tanah di muka bumi:</p>
+  <ol>
+    <li><b><span class="hl-blue">Malaikat Jibril:</span></b> Tanah menolak seraya berkata, <i>“Aku tidak sudi diriku diambil untuk dijadikan Adam, sebab kelak akan terjadi pertumpahan darah.”</i></li>
+    <li><b><span class="hl-green">Malaikat Mikail:</span></b> Tanah memberikan penolakan yang sama.</li>
+    <li><b><span class="hl-orange">Malaikat Israfil:</span></b> Tanah pun kembali menolak.</li>
+    <li><b><span class="hl-gold">Malaikat Izrail:</span></b> Allah berpesan, <i>“Apa pun yang terjadi, suka atau tidak suka, engkau wajib mengambilnya. Katakanlah bahwa engkau mengambilnya atas perintah Tuhan.”</i></li>
+  </ol>
+  <p>Ketika Izrail berkata, <i>“Aku datang atas nama Tuhan dan atas perintah Tuhan,”</i> tanah pun pasrah. Allah kemudian menetapkan kepada Izrail: <span class="hl-pink">“Wahai Izrail, kelak pada waktunya Aku perintahkan engkau pula untuk mencabut ruh itu kembali dari batang tubuhnya.”</span> Itulah sebabnya Izrail bertugas sebagai malaikat pencabut nyawa.</p>
+  <blockquote><i>“Katakanlah: Malaikat maut yang diserahi untuk mencabut nyawamu akan mematikan kamu.”</i><br><b>Al-Qur’an, QS. As-Sajdah: 11</b></blockquote>
+  <blockquote><i>“Dan Dialah yang mempunyai kekuasaan tertinggi di atas semua hamba-Nya, dan Dia mengutus kepadamu malaikat-malaikat penjaga, sehingga apabila datang kematian kepada salah seorang di antara kamu, ia diwafatkan oleh malaikat-malaikat Kami.”</i><br><b>Al-Qur’an, QS. Al-An’am: 61</b></blockquote>
+  <h3>Tanah Dibentuk Menjadi Patung Jasad Adam</h3>
+  <p>Tanah yang diambil tersebut terdiri atas <span class="hl-gold">12 macam sari tanah</span>, di antaranya tanah <b>Baitul Maqdis, Baitullah, Tursina, India, Paris, Babilonia, Adnin, Firdaus, telaga Al-Kautsar, dan Thaif</b>—yang pada hakikatnya seluruhnya berasal dari alam <span class="hl-yellow">Baitul Makmur</span>.</p>
+  <p>Tanah tersebut kemudian diaduk dengan berbagai unsur air—<span class="hl-blue">air asin, air tawar, air amis</span>, serta disirami <span class="hl-green">air hujan</span>—lalu dibentuk menjadi patung Adam. Ke dalam bentuk jasad tersebut Allah menyematkan sifat <span class="hl-pink">Jalal, Jamal, Qahar, Kamal, Rahman, dan Rahim</span>.</p>
+  <blockquote><i>“Dia menciptakan manusia dari tanah kering seperti tembikar.”</i><br><b>Al-Qur’an, QS. Ar-Rahman: 14</b></blockquote>
+  <blockquote><i>“Maka apabila Aku telah menyempurnakan kejadiannya, dan telah meniupkan ke dalamnya ruh-Ku.”</i><br><b>Al-Qur’an, QS. Al-Hijr: 29</b></blockquote>
+  <h3>Adam Sebagai Cermin dan Kenyataan Wujud Tuhan</h3>
+  <p>Setelah jasad Adam terbentuk sempurna, Allah berfirman: <i>“Sesungguhnya Aku jadikan Adam itu adalah gambaran rupa daripada diri-Ku.”</i> Kedudukan Adam dipahami melalui tiga sudut pandang ilmu:</p>
+  <ul>
+    <li><b><span class="hl-orange">Dalam Ilmu Syariat:</span></b> Adam disebut <b>Hamba Allah</b>.</li>
+    <li><b><span class="hl-green">Dalam Ilmu Tarekat:</span></b> Adam disebut <b>Mir’atullah</b> — cermin untuk memandang rupa wajah Tuhan.</li>
+    <li><b><span class="hl-pink">Dalam Ilmu Hakikat:</span></b> Adam disebut <b>Wujudullah</b> — nyatanya wujud Tuhan.</li>
+  </ul>
+  <p>Secara maknawi, <i>Adam</i> berarti <span class="hl-yellow">tiada</span>. Jika Adam tiada, lalu siapa yang ada? Yang ada hanyalah <i>Aku</i>, kata Allah. Maka hamba Allah adalah cermin dan kenyataan wujud-Nya.</p>
+  <blockquote><i>“Al-insanu sirri wa Ana sirruhu.”</i><br><b>Hadis Qudsi</b> — <span class="hl-gold">“Insan itu adalah rahasia-Ku, dan Aku adalah rahasia-Nya.”</span></blockquote>
+  <blockquote><i>“Sesungguhnya Aku hendak menjadikan seorang khalifah di muka bumi.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 30</b></blockquote>`
+},
+{
+  t:"Ruh 200 Tahun, 29 Huruf & Sujud",
+  k:"Bagian 5 • Al-Qur'an Qadim pada Batang Tubuh & Rahasia Hijab Iblis",
+  h:"Peniupan Ruh 200 Tahun, 29 Huruf Hijaiyah & Perintah Sujud",
+  c:LEGEND+`<h3>Ruh Ditiupkan Melalui Ubun-Ubun Selama 200 Tahun</h3>
+  <p>Setelah jasad Adam siap, Allah memerintahkan <span class="hl-gold">Malaikat Izrail</span> untuk meniupkan ruh ke dalamnya. Sebagaimana Izrail yang berhak mengambil sari tanah pembentuk raga, Izrail pula yang ditugaskan memasukkan ruh ke dalam raga tersebut.</p>
+  <p>Ruh ditiupkan masuk melalui <span class="hl-blue">ubun-ubun</span>, dan perjalanan ruh meresap hingga meliputi seluruh batang tubuh Adam berlangsung selama <span class="hl-yellow">200 tahun</span> sampai masuk dengan sempurna.</p>
+  <blockquote><i>“Maka apabila Aku telah menyempurnakan kejadiannya, dan telah meniupkan ke dalamnya ruh-Ku, maka tunduklah kamu kepadanya dengan bersujud.”</i><br><b>Al-Qur’an, QS. Al-Hijr: 29</b></blockquote>
+  <blockquote><i>“Kemudian Dia menyempurnakan dan meniupkan ke dalamnya ruh-Nya.”</i><br><b>Al-Qur’an, QS. As-Sajdah: 9</b></blockquote>
+  <h3>Susunan 29 Huruf Hijaiyah pada Batang Tubuh Adam</h3>
+  <p>Ketika ruh telah meliputi seluruh tubuh Adam, berdirilah <span class="hl-gold">29 huruf hijaiyah</span> pada batang tubuhnya. Inilah yang disebut <span class="hl-pink">Al-Qur’an yang Qadim</span>—Al-Qur’an yang tidak berhuruf tinta, tidak berbaris, dan tidak bersuara, namun nyata terbaca pada batang tubuh manusia:</p>
+  <ul>
+    <li><b><span class="hl-yellow">Kepala & Wajah:</span></b> Kepala (<i>Ya</i>), Telinga kanan (<i>Ain</i>), Telinga kiri (<i>Ghain</i>), Antara dua alis (<i>Alif</i>), Mata kanan (<i>Ba</i>), Mata kiri (<i>Ta</i>), Bibir (<i>Mim</i>), Mulut (<i>Tsa</i>), Hidung (<i>Lam</i>).</li>
+    <li><b><span class="hl-green">Tubuh Bagian Atas:</span></b> Tengkuk (<i>Kaf</i>), Bahu kanan (<i>Fa</i>), Bahu kiri (<i>Qaf</i>), Tangan kanan (<i>Shad</i>), Tangan kiri (<i>Dhad</i>), Susu kanan (<i>Sin</i>), Susu kiri (<i>Syin</i>).</li>
+    <li><b><span class="hl-blue">Badan & Anggota Gerak:</span></b> Jantung (<i>Ha besar</i>), Rusuk kanan (<i>Ra</i>), Rusuk kiri (<i>Zai</i>), Perut (<i>Nun</i>), Punggung (<i>Wau</i>), Paha kanan (<i>Dal</i>), Paha kiri (<i>Dzal</i>), Kaki kanan (<i>Tha</i>), Kaki kiri (<i>Zha</i>), Seluruh persendian (<i>Hamzah</i>).</li>
+  </ul>
+  <p>Setelah sempurna wujud, ruh, dan susunan hurufnya, barulah Allah memerintahkan malaikat dan iblis bersujud kepada Adam.</p>
+  <blockquote><i>“Janganlah kamu gerakkan lidahmu untuk membaca Al-Qur’an karena hendak cepat-cepat menguasainya. Sesungguhnya atas tanggungan Kamilah mengumpulkannya dan membacanya.”</i><br><b>Al-Qur’an, QS. Al-Qiyamah: 16–17</b></blockquote>
+  <blockquote><i>“Bacalah kitabmu, cukuplah dirimu sendiri pada waktu ini sebagai penghisab terhadapmu.”</i><br><b>Al-Qur’an, QS. Al-Isra’: 14</b></blockquote>
+  <h3>Perintah Sujud kepada Adam & Rahasia di Balik Hijab</h3>
+  <p>Sebelum ruh ditiupkan, perintah sujud belum turun. Setelah ruh menyatu dengan raga, Allah berfirman: <i>“Hai malaikat, hai iblis, sujudlah kamu kepada Adam. Sujud kepada Adam sudah sama artinya dengan sujud kepada-Ku.”</i> Sujud ini bukanlah sujud ibadah menyembah makhluk, melainkan <span class="hl-gold">sujud penghormatan</span> karena Adam adalah <b>Khalifah</b> pembawa rahasia Tuhan.</p>
+  <p>Seluruh malaikat patuh dan bersujud karena Allah membukakan penglihatan batin mereka bahwa Adam adalah kenyataan rahasia wujud Tuhan. Sebaliknya, <span class="hl-orange">iblis menolak sujud</span> seraya menyombongkan asal penciptaannya dari api dibanding tanah.</p>
+  <p>Allah menutupkan hijab pada iblis sehingga ia hanya mampu memandang sisi zahir Adam semata. Karena itu, <span class="hl-yellow">janganlah tertipu oleh pandangan zahir</span>, sebab memandang hanya pada kulit luar tanpa menembus hakikat adalah sifat pandangan iblis.</p>
+  <blockquote><i>“Dan ketika Kami berfirman kepada para malaikat: Sujudlah kamu kepada Adam, maka sujudlah mereka kecuali Iblis. Ia enggan dan takabur.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 34</b></blockquote>
+  <blockquote><i>“Allah berfirman: Apa yang menghalangimu untuk sujud kepada Adam? Iblis menjawab: Aku lebih baik daripadanya, Engkau ciptakan aku dari api, sedang dia Engkau ciptakan dari tanah.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 12</b></blockquote>`
+},
+{
+  t:"Ruh sebagai Batin & Mengenal Diri",
+  k:"Bagian 6 • Sifat Ma'ani yang Tujuh & Kedudukan Nur Muhammad",
+  h:"Batin Hamba Adalah Ruh, Mengenal Diri & Kedudukan Nur Muhammad",
+  c:LEGEND+`<h3>Batin Hamba Adalah Ruh sebagai Kenyataan Sifat Tuhan</h3>
+  <p>Batin hamba yang menjadi kenyataan diri Tuhan adalah <span class="hl-blue">ruh</span>. Siapakah ruh itu? Ruh adalah <b>Hayat</b> (hidup), dan yang Maha Hidup itu adalah Allah. Ruh disebut sebagai rahasia Allah karena pada ruh itulah terpancar <span class="hl-green">Sifat Ma’ani yang tujuh</span>: <b>Sama’</b> (mendengar), <b>Bashar</b> (melihat), <b>Kalam</b> (berkata), <b>Ilmu</b> (mengetahui), <b>Qudrat</b> (kuasa), <b>Iradat</b> (berkehendak), dan <b>Hayat</b> (hidup).</p>
+  <p>Tanpa nyata sifat <i>Sama’</i> Allah pada ruh, telinga tidak akan mendengar; tanpa sifat <i>Bashar</i>, mata tidak akan melihat. Hakikatnya, yang mendengar, melihat, berkata, berkehendak, dan hidup adalah kekuasaan sifat Allah yang memancar pada ruh—dan <span class="hl-gold">Sifat-Nya tiada lain adalah Zat diri-Nya sendiri</span>.</p>
+  <blockquote><i>“Mereka bertanya kepadamu tentang ruh. Katakanlah: Ruh itu termasuk urusan Tuhanku.”</i><br><b>Al-Qur’an, QS. Al-Isra’: 85</b></blockquote>
+  <blockquote><i>“Tidak ada sesuatu pun yang serupa dengan Dia, dan Dialah Yang Maha Mendengar lagi Maha Melihat.”</i><br><b>Al-Qur’an, QS. Asy-Syura: 11</b></blockquote>
+  <h3>Jangan Mencari Tuhan Jauh Keluar Diri</h3>
+  <p>Rasulullah SAW mengajarkan bahwa siapa pun yang mencari Tuhan keluar dari dirinya—menelusuri gua-gua, hutan belantara, maupun puncak gunung—justru akan semakin jauh tersesat dari kebenaran. Sebaliknya, siapa yang menengok ke dalam dirinya sendiri pasti akan menemui-Nya, sebab kenyataan Allah berada pada <span class="hl-pink">batin hamba-Nya</span>.</p>
+  <p>Pada diri manusia terdapat <span class="hl-gold">dua unsur</span>:</p>
+  <ol>
+    <li><b><span class="hl-orange">Diri yang Kasar / Zahir:</span></b> Tubuh jasmani yang merupakan wadah atau cangkang.</li>
+    <li><b><span class="hl-blue">Diri yang Halus / Batin:</span></b> Ruh yang menjadi tempat tajalli sifat-sifat Tuhan.</li>
+  </ol>
+  <p>Inilah makna sejati dari kaidah agung: <span class="hl-yellow">barang siapa mengenal dirinya sendiri secara batin, niscaya ia mengenal Tuhannya.</span></p>
+  <blockquote><i>“Dan Kami lebih dekat kepadanya daripada urat lehernya.”</i><br><b>Al-Qur’an, QS. Qaf: 16</b></blockquote>
+  <blockquote><i>“Man ‘arafa nafsahu faqad ‘arafa Rabbahu.”</i><br><b>Kaidah Tasawuf</b> — <span class="hl-gold">“Barang siapa mengenal dirinya, maka ia mengenal Tuhannya.”</span></blockquote>
+  <h3>Kedudukan Nur Muhammad dan Keberadaan Zat yang Tak Terjangkau Akal</h3>
+  <p><span class="hl-blue">Nur Muhammad</span> adalah manifestasi dari sifat <b>Sama’, Bashar, Kalam, Ilmu, Qudrat, Iradat, dan Hayat</b> itu sendiri; karena itu Nur Muhammad disebut <span class="hl-green">Sifat</span>, dan Sifat itu bersemayam pada ruh sebagai rahasia Tuhan.</p>
+  <p>Adapun <span class="hl-gold">Allah</span> adalah nama agung yang diberikan oleh diri-Nya sendiri. Zat-Nya tidak dapat dijangkau oleh imajinasi, pikiran, maupun rekayasa ilmu manusia. Allah tidak diliputi oleh ruang kekosongan atau kehampaan, melainkan <span class="hl-yellow">Dialah yang meliputi seluruh kekosongan dan kehampaan tersebut</span>.</p>
+  <blockquote><i>“Katakanlah: Dialah Allah, Yang Maha Esa. Allah adalah Tuhan yang bergantung kepada-Nya segala sesuatu. Dia tiada beranak dan tidak pula diperanakkan. Dan tidak ada seorang pun yang setara dengan Dia.”</i><br><b>Al-Qur’an, QS. Al-Ikhlas: 1–4</b></blockquote>
+  <blockquote><i>“Tafakkaru fi khalqillah, wa la tafakkaru fi dzatillah.”</i><br><b>Hadis</b> — <span class="hl-pink">“Berpikirlah tentang ciptaan Allah, dan jangan memikirkan hakikat Zat Allah.”</span></blockquote>`
+},
+{
+  t:"Adam di Surga, Hawa & Pohon Khuldi",
+  k:"Bagian 7 • Tiga Alam Ketuhanan, Nikah Batin Surga & Jebakan Iblis",
+  h:"Adam di Alam Surga, Zahirnya Hawa, Nikah Batin & Makna Pohon Khuldi",
+  c:LEGEND+`<h3>Adam Dinaikkan ke Alam Surga & Tiga Alam Ketuhanan</h3>
+  <p>Ketika iblis dilaknat karena membangkang, dunia belum sempurna diciptakan dan belum siap ditempati Adam. Oleh karena itu, sebelum dunia dizahirkan, Adam dinaikkan terlebih dahulu ke <span class="hl-green">alam surga</span>.</p>
+  <p>Penciptaan Adam berlangsung secara zahir di alam <b>Tanjizi Muqaddar</b> dan secara batin di alam <b>Qadim</b> (<b>Baitul Makmur</b>). Dalam penjelasan ilmu hakikat, terdapat <span class="hl-gold">tiga alam asal</span> yang hakikatnya satu kesatuan yang esa:</p>
+  <ol>
+    <li><b><span class="hl-orange">Tubuh:</span></b> Berasal dari <b>Baitul Makmur</b>, dan kembali ke Baitul Makmur.</li>
+    <li><b><span class="hl-green">Hati:</span></b> Berasal dari <b>Rafraf</b>, dan kembali ke Rafraf.</li>
+    <li><b><span class="hl-blue">Ruh:</span></b> Berasal dari <b>Al-Mala’il A’la</b>, dan kembali ke Al-Mala’il A’la.</li>
+  </ol>
+  <blockquote><i>“Dan Kami berfirman: Hai Adam, diamilah oleh kamu dan istrimu surga ini.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 35</b></blockquote>
+  <blockquote><i>“Sesungguhnya kami adalah milik Allah dan kepada-Nya lah kami kembali.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 156</b></blockquote>
+  <h3>Hakikat Tanah Baitul Makmur di Balik Kisah Berlapis</h3>
+  <p>Jika alam dunia belum tercipta, dari manakah tanah penciptaan Adam diambil? Hakikatnya seluruh sari tanah itu berasal dari satu sumber, yakni <span class="hl-gold">tanah Baitul Makmur</span>. Penyebutan berbagai negeri seperti Baitul Maqdis, Irak, Adenin, Firdaus, hingga Thaif adalah cara penguraian syariat batin agar mudah dipahami akal.</p>
+  <p>Ini adalah <span class="hl-pink">kisah berlapis</span>: di balik setiap ungkapan yang zahir terdapat makna batin yang dalam. Maka hendaklah kita <span class="hl-yellow">membaca yang batin di balik yang zahir</span>. Setelah penciptaannya sempurna, Adam ditempatkan di surga sambil menanti kesiapan bumi untuk ia pimpin sebagai Khalifah.</p>
+  <blockquote><i>“Sesungguhnya Aku hendak menjadikan seorang khalifah di muka bumi.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 30</b></blockquote>
+  <blockquote><i>“Sesungguhnya Kami telah menciptakan manusia dalam bentuk yang sebaik-baiknya.”</i><br><b>Al-Qur’an, QS. At-Tin: 4</b></blockquote>
+  <h3>Kesendirian Adam di Surga dan Zahirnya Hawa</h3>
+  <p>Saat berada di alam surga seorang diri, Adam merenung melihat sepasang burung merpati yang bercumbu penuh kasih. Terbetiklah keinginan di dalam kalbunya: <i>“Andai kata Allah menciptakan pasangan bagiku seperti burung itu, alangkah bahagianya hidupku di surga ini.”</i></p>
+  <p>Allah Maha Mengetahui bisikan hati hamba-Nya. Ketika Adam tertidur dan bermimpi, terzahirlah sosok perempuan di hadapannya. Saat terjaga, sosok itu benar-benar wujud nyata di depan matanya. Karena berasal dari keinginan batin Adam, Adam menamainya <span class="hl-pink">Hawa</span>—yang bermakna <span class="hl-yellow">keinginan</span> atau <span class="hl-yellow">kecenderungan hati</span>.</p>
+  <blockquote><i>“Dan Dia menciptakan daripadanya istrinya, dan dari keduanya Allah memperkembangbiakkan laki-laki dan perempuan yang banyak.”</i><br><b>Al-Qur’an, QS. An-Nisa’: 1</b></blockquote>
+  <blockquote><i>“Hai Adam, diamilah oleh kamu dan istrimu surga ini.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 35</b></blockquote>
+  <h3>Pernikahan Batin Adam dan Hawa di Alam Surga</h3>
+  <p>Setelah memberi nama Hawa—sehingga Adam memanggilnya <i>belahan jiwaku</i> dan Hawa memanggil Adam <i>jantung hatiku</i>—Adam hendak mendekati Hawa. Namun Hawa mengingatkan, dan Allah pun menegur bahwa keduanya belum sah sebagai pasangan suami istri sebelum melalui ijab kabul.</p>
+  <p>Maka Allah menikahkan Adam dan Hawa di alam surga. Peristiwa agung inilah yang disebut <span class="hl-pink">Nikah Batin</span>:</p>
+  <ul>
+    <li><b><span class="hl-gold">Wali bagi Hawa:</span></b> Allah SWT sendiri (sedangkan laki-laki tidak berwali, melainkan menikahkan dirinya sendiri).</li>
+    <li><b><span class="hl-yellow">Mahar Pernikahan:</span></b> <b>Dua kalimat syahadat</b>.</li>
+  </ul>
+  <blockquote><i>“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”</i><br><b>Al-Qur’an, QS. Ar-Rum: 21</b></blockquote>
+  <blockquote><i>“An-nikahu sunnati.”</i><br><b>Hadis</b> — <span class="hl-green">“Nikah itu adalah sunnahku.”</span></blockquote>
+  <h3>Larangan Mendekati Pohon Khuldi</h3>
+  <p>Setelah Adam dan Hawa resmi menikah di surga, Allah memberikan kebebasan kepada keduanya untuk menikmati seluruh fasilitas surga dengan satu batas larangan yang tegas:</p>
+  <blockquote><i>“Hai Adam dan Hawa, nikmatilah fasilitas surga ini. Namun ingatlah, jangan sekali-kali kamu mendekati batang pohon ini.”</i></blockquote>
+  <p>Dalam pemahaman syariat, pohon terlarang tersebut dikenal sebagai <span class="hl-orange">Pohon Khuldi</span>—yang secara bahasa bermakna <span class="hl-yellow">kekal</span>.</p>
+  <blockquote><i>“Dan janganlah kamu mendekati pohon ini, yang menyebabkan kamu termasuk orang-orang yang zalim.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 35</b></blockquote>
+  <blockquote><i>“Kemudian setan membisikkan pikiran jahat kepadanya, dengan berkata: Hai Adam, maukah saya tunjukkan kepada kamu pohon khuldi dan kerajaan yang tidak akan binasa?”</i><br><b>Al-Qur’an, QS. Thaha: 120</b></blockquote>
+  <h3>Jebakan Iblis dan Tergelincirnya Adam serta Hawa</h3>
+  <p>Iblis yang telah dilaknat namun belum diturunkan ke dunia masih dapat menyusup ke batas antara alam Qadim (Baitul Makmur) dan alam transisi muhadas. Mengetahui adanya larangan mendekati Pohon Khuldi, iblis pun melancarkan <span class="hl-orange">tipu daya</span> dengan maksud mencari pengikut sebanyak-banyaknya untuk menemaninya di neraka kelak.</p>
+  <p>Iblis membujuk keduanya: <i>“Allah melarang kalian memakan buah pohon itu semata-mata agar kalian tidak kekal berlama-lama di surga ini.”</i> Akhirnya, Adam dan Hawa pun terbujuk oleh rayuan iblis dan melanggar larangan tersebut.</p>
+  <blockquote><i>“Maka setan membisikkan pikiran jahat kepada keduanya untuk menampakkan kepada keduanya apa yang tertutup dari mereka yaitu auratnya, dan setan berkata: Tuhan kamu tidak melarangmu dari mendekati pohon ini, melainkan supaya kamu berdua tidak menjadi malaikat atau tidak menjadi orang-orang yang kekal dalam surga.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 20</b></blockquote>
+  <blockquote><i>“Maka setan membujuk keduanya untuk memakan buah itu dengan tipu daya.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 22</b></blockquote>
+  <h3>Makna Hakikat di Balik Kias Pohon Khuldi</h3>
+  <p>Dalam bahasa kiasan, buah yang dimakan Adam dikisahkan tersangkut di tenggorokan menjadi <i>jakun</i>, sedangkan pada Hawa menjadi <i>buah dada</i> serta <i>siklus haid</i>. Semua itu merupakan ungkapan simbolis.</p>
+  <p>Adapun <span class="hl-gold">makna hakikat</span> dari batang pohon terlarang itu bukanlah pohon kayu, melainkan <span class="hl-pink">batang tubuh Adam dan Hawa sendiri</span>. Larangan tersebut berarti perintah agar keduanya menjaga batas kesucian di alam surga yang bukan tempat berkembang biak. Ketika batas itu dilanggar akibat jebakan iblis, turunlah teguran dan murka Allah SWT.</p>
+  <blockquote><i>“Tatkala keduanya telah merasai buah kayu itu, nampaklah bagi keduanya aurat-auratnya, dan mulailah keduanya menutupinya dengan daun-daun surga.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 22</b></blockquote>`
+},
+{
+  t:"Turun ke Dunia, Jabal Rahmah & Nikah Batin",
+  k:"Bagian 8 • Alam Tanjizi Muqaddar, Pertemuan & Syariat Nikah Batin",
+  h:"Turun ke Dunia, Pertemuan di Jabal Rahmah & Tata Cara Nikah Batin",
+  c:LEGEND+`<h3>Adam dan Hawa Diturunkan ke Muka Bumi</h3>
+  <p>Turunnya Adam dan Hawa dari surga ke alam dunia sejatinya adalah <span class="hl-gold">skenario dan ketetapan Allah SWT</span>, karena saat itu bumi telah sempurna dan siap ditempati oleh Khalifah. Segala ketetapan Allah berjalan melalui <span class="hl-green">hukum sebab-akibat</span>: masuknya godaan iblis dan pelanggaran larangan menjadi jalan sebab diturunkannya Adam, Hawa, dan iblis ke muka bumi.</p>
+  <blockquote><i>“Lalu keduanya digelincirkan oleh setan dari surga itu dan dikeluarkan dari keadaan semula. Dan Kami berfirman: Turunlah kamu, sebagian kamu menjadi musuh bagi yang lain, dan bagi kamu ada tempat kediaman di bumi, dan kesenangan hidup sampai waktu yang ditentukan.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 36</b></blockquote>
+  <blockquote><i>“Allah berfirman: Turunlah kamu sekalian, sebagian kamu menjadi musuh bagi sebagian yang lain. Dan kamu mempunyai tempat kediaman dan kesenangan di muka bumi sampai waktu yang ditentukan.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 24</b></blockquote>
+  <h3>Nama-Nama Alam Dunia (Alam Tanjizi Muqaddar)</h3>
+  <p>Alam dunia tempat manusia menjalani pengabdian dan takdirnya disebut <span class="hl-gold">Alam Tanjizi Muqaddar</span>. Selain nama tersebut, alam ini juga dikenal dengan beberapa sebutan sesuai sudut pandangnya:</p>
+  <ul>
+    <li><b><span class="hl-green">Alam Muqaddar</span></b> &amp; <b><span class="hl-green">Alam Mahfuz</span></b></li>
+    <li><b><span class="hl-orange">Alam Zahir</span></b> &amp; <b><span class="hl-orange">Alam Nyata</span></b></li>
+    <li><b><span class="hl-blue">Alam Dunia</span></b> &amp; <b><span class="hl-blue">Alam Fana</span></b></li>
+    <li><b><span class="hl-pink">Alam Nasut</span></b> &amp; <b><span class="hl-pink">Alam Syariat</span></b></li>
+  </ul>
+  <p><i>(Catatan: Adapun istilah “alam maya” bukanlah nama hakiki alam dunia, melainkan sekadar ungkapan candaan).</i></p>
+  <blockquote><i>“Dan kehidupan dunia ini hanyalah main-main dan senda gurau belaka.”</i><br><b>Al-Qur’an, QS. Al-An’am: 32</b></blockquote>
+  <blockquote><i>“Ketahuilah, bahwa sesungguhnya kehidupan dunia ini hanyalah permainan dan suatu yang melalaikan.”</i><br><b>Al-Qur’an, QS. Al-Hadid: 20</b></blockquote>
+  <h3>Perpisahan Ratusan Tahun & Pertemuan di Jabal Rahmah</h3>
+  <p>Saat diturunkan ke bumi, Adam ditempatkan di belahan <span class="hl-gold">Timur</span>, sedangkan Hawa di belahan <span class="hl-blue">Barat</span>—sebuah isyarat filosofis atas dinamika peradaban Barat dan Timur. Selama ratusan tahun keduanya terpisah dalam penantian dan pertobatan.</p>
+  <p>Ketika waktu yang ditentukan Allah tiba, keduanya pun dipertemukan kembali di <span class="hl-pink">Jabal Rahmah</span>—yakni <span class="hl-yellow">Bukit Kasih Sayang</span>.</p>
+  <blockquote><i>“Kemudian Adam menerima beberapa kalimat dari Tuhannya, maka Allah menerima tobatnya. Sesungguhnya Allah Maha Penerima Tobat lagi Maha Penyayang.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 37</b></blockquote>
+  <h3>Pertemuan di Jabal Rahmah dan Dasar Ucapan Nikah Batin</h3>
+  <p>Saat saling menemukan di Jabal Rahmah, keduanya berlari kecil mendekat hingga Allah membisikkan tuntunan di dalam hati mereka untuk menghentikan langkah. Ketika berhenti, terucaplah salam suci yang menjadi dasar <span class="hl-pink">Nikah Batin</span>:</p>
+  <ul>
+    <li><b><span class="hl-gold">Adam mengucapkan:</span></b> <i>“Assalamu’alaikum ya Baburrahim.”</i></li>
+    <li><b><span class="hl-green">Hawa menjawab:</span></b> <i>“Wa’alaikumsalam ya Baburrahman.”</i></li>
+  </ul>
+  <p>Setelah tobat keduanya diterima Allah, pernikahan batin yang dahulu berlangsung di surga diperintahkan untuk disyariatkan kembali di alam dunia. Karena pernikahan batin disyariatkan secara nyata di dunia, maka disebutlah <span class="hl-yellow">Syariat Batin</span> atau <b>Nikah Batin</b>.</p>
+  <blockquote><i>“Kemudian Adam menerima beberapa kalimat dari Tuhannya, maka Allah menerima tobatnya.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 37</b></blockquote>
+  <blockquote><i>“Keduanya berkata: Ya Tuhan kami, kami telah menganiaya diri kami sendiri, dan jika Engkau tidak mengampuni kami dan memberi rahmat kepada kami, niscaya pastilah kami termasuk orang-orang yang merugi.”</i><br><b>Al-Qur’an, QS. Al-A’raf: 23</b></blockquote>
+  <h3>Rasulullah SAW dan Amanah Nikah Batin dari Gua Hira</h3>
+  <p>Perintah menyempurnakan nikah batin juga diterima oleh Rasulullah SAW di <span class="hl-gold">Gua Hira</span> sebagai makna tersirat dari amanah ketuhanan dalam membina rumah tangga:</p>
+  <blockquote><i>“Bertakwalah kepada Allah dalam urusan wanita. Sesungguhnya engkau mengambilnya sebagai pasangan hidupmu adalah amanah yang Allah titipkan kepadamu. Ambillah ia atas nama Tuhan dan atas nama diri-Ku.”</i></blockquote>
+  <p>Inilah tuntunan Rasulullah SAW kepada umatnya agar pernikahan tidak hanya sah secara hukum zahir, tetapi juga <span class="hl-green">terikat kokoh secara batin</span>.</p>
+  <blockquote><i>“Bacalah dengan menyebut nama Tuhanmu Yang menciptakan.”</i><br><b>Al-Qur’an, QS. Al-Alaq: 1</b></blockquote>
+  <blockquote><i>“Ittaqullah fin-nisa’.”</i><br><b>Hadis</b> — <span class="hl-pink">“Bertakwalah kepada Allah dalam urusan wanita.”</span></blockquote>
+  <h3>Tata Cara Melaksanakan Nikah Batin</h3>
+  <p>Dalam praktiknya, <span class="hl-orange">nikah zahir wajib didahulukan</span> secara resmi di KUA, masjid, atau rumah sesuai ketentuan syariat. Setelah akad zahir selesai—misalnya pada malam hari setelah salat Isya sebelum suami istri bercampur—barulah dilaksanakan <span class="hl-pink">nikah batin</span> dengan adab berikut:</p>
+  <ol>
+    <li>Keduanya mengambil <span class="hl-blue">air wudu</span> untuk menyucikan diri.</li>
+    <li>Saling berjabat tangan dengan penuh ketenangan.</li>
+    <li>Suami mengucapkan: <span class="hl-gold"><i>“Assalamu’alaikum ya Baburrahim.”</i></span></li>
+    <li>Istri menjawab: <span class="hl-green"><i>“Wa’alaikumsalam ya Baburrahman.”</i></span></li>
+    <li>Dilanjutkan dengan pengucapan zikir batin: suami menyebut <i>“Allah”</i>, istri menyambut <i>“Hu Allah”</i>, suami mengucap <i>“Allah kata Muhammad”</i>, lalu ditutup dengan membaca <span class="hl-yellow">selawat</span> kepada Nabi Muhammad SAW.</li>
+  </ol>
+  <blockquote><i>“Sesungguhnya Allah menyukai orang-orang yang bertobat dan menyukai orang-orang yang mensucikan diri.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 222</b></blockquote>
+  <blockquote><i>“Berikanlah maskawin kepada wanita yang kamu nikahi sebagai pemberian dengan penuh kerelaan.”</i><br><b>Al-Qur’an, QS. An-Nisa’: 4</b></blockquote>
+  <h3>Dua Rahasia Agung di Balik Nikah Batin</h3>
+  <p>Nikah batin melahirkan ikatan <span class="hl-green">sakinah, mawaddah, dan warahmah</span> yang mendalam serta menjaga kesetiaan rumah tangga melalui <span class="hl-gold">dua rahasia besar</span>:</p>
+  <ol>
+    <li><b><span class="hl-gold">Kesetiaan yang Sulit Tergantikan:</span></b> Apabila salah satu pasangan wafat, pasangan yang ditinggalkan akan merasakan ikatan batin yang begitu kuat sehingga sangat sulit mencari pengganti yang sepadan dengan kehendak dan keinginan hatinya.</li>
+    <li><b><span class="hl-pink">Kepekaan Batin yang Tajam:</span></b> Apabila terjadi pengkhianatan, pasangannya akan mudah merasakannya secara batiniah, sebab keduanya telah menyatu sebagai <i>belahan jiwa</i> dan <i>jantung hati</i>—apa yang ada pada Adam terasa pada Hawa, dan apa yang ada pada Hawa terasa pada Adam.</li>
+  </ol>
+  <blockquote><i>“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”</i><br><b>Al-Qur’an, QS. Ar-Rum: 21</b></blockquote>`
+},
+{
+  t:"Empat Nama Satu Hakikat & Tauhid Murni",
+  k:"Bagian 9 • Rahmatan Lil Alamin, Rahasiakan Diri Allah & Wahdatul Wujud",
+  h:"Empat Nama Satu Hakikat, Rahmatan Lil Alamin & Tauhid Murni",
+  c:LEGEND+`<h3>Allah, Muhammad, Adam, Insan: Namanya Empat, Orangnya Satu</h3>
+  <p>Dari seluruh rangkaian kisah penciptaan dan keturunan Adam hingga kini, inti rahasia yang hendak kita pahami adalah siapa sejatinya Adam. Adam merupakan kezahiran dari kenyataan wujud Tuhan, sehingga terangkumlah kesimpulan agung: <span class="hl-yellow">Allah, Muhammad, Adam, dan Insan—namanya empat, namun pada hakikatnya satu</span>:</p>
+  <ul>
+    <li><b><span class="hl-gold">Allah:</span></b> Nama Zat diri-Nya yang Maha Kosong dari penyerupaan.</li>
+    <li><b><span class="hl-green">Muhammad:</span></b> Nama wujud sifat diri-Nya.</li>
+    <li><b><span class="hl-orange">Adam:</span></b> Nama rupa kenyataan diri-Nya.</li>
+    <li><b><span class="hl-pink">Insan:</span></b> Nama rahasia daripada diri-Nya.</li>
+  </ul>
+  <p>Apabila seseorang telah memahami peran pengabdiannya dalam skenario ketuhanan ini, insya Allah kehadirannya akan menjadi <span class="hl-blue">rahmatan lil alamin</span> (rahmat bagi semesta alam).</p>
+  <blockquote><i>“Dan tidaklah Kami mengutus kamu, melainkan untuk menjadi rahmat bagi semesta alam.”</i><br><b>Al-Qur’an, QS. Al-Anbiya’: 107</b></blockquote>
+  <blockquote><i>“Katakanlah: Dialah Allah, Yang Maha Esa.”</i><br><b>Al-Qur’an, QS. Al-Ikhlas: 1</b></blockquote>
+  <h3>Cara Mewujudkan Sikap Rahmatan Lil Alamin</h3>
+  <p>Agar kita benar-benar menjelma menjadi pribadi yang <span class="hl-green">rahmatan lil alamin</span>, peganglah <span class="hl-gold">dua kaidah penglihatan batin</span>:</p>
+  <ol>
+    <li><b><span class="hl-gold">Pandang Allahnya pada apa yang dilihat oleh mata:</span></b> Jangan terhenti pada hijab benda atau rupa luar—baik saat memandang dinding, tiang, maupun suami, istri, anak, menantu, dan cucu. Saksikan bahwa kebesaran wujud Allahlah yang meliputi segala sesuatu.</li>
+    <li><b><span class="hl-pink">Jangan terikat pada rupa zahir yang dipandang mata:</span></b> Pandanglah kebesaran Allah di balik yang zahir.</li>
+  </ol>
+  <p>Orang yang telah mencapai penglihatan makrifat seperti ini akan senantiasa berakhlak baik, tenang, nyaman, serta jauh dari permusuhan, kezaliman, dan pertengkaran.</p>
+  <blockquote><i>“Ingatlah, sesungguhnya Tuhanmu meliputi segala sesuatu.”</i><br><b>Al-Qur’an, QS. Fussilat: 54</b></blockquote>
+  <blockquote><i>“Ke mana saja kamu menghadap, di situlah wajah Allah.”</i><br><b>Al-Qur’an, QS. Al-Baqarah: 115</b></blockquote>
+  <h3>Kunci Kajian: Rahasiakan Diri Allah pada Diri Masing-Masing</h3>
+  <p>Cara mengunci pemahaman kajian ini adalah: <span class="hl-yellow">letakkan yang batin di dalam, dan letakkan yang zahir di luar</span>. Rahasiakanlah diri Allah pada diri masing-masing.</p>
+  <p>Meskipun secara hakikat manusia merupakan tajalli kenyataan-Nya, secara zahir jangan pernah menyebut diri sendiri maupun orang lain sebagai Tuhan. Tetaplah memanggil dengan adab syariat: <span class="hl-green">hamba, insan, manusia, suamiku, istriku, atau anakku</span>, sementara pemahaman batinnya disimpan rapi di dalam dada.</p>
+  <p>Adab ini adalah pesan Rasulullah SAW agar kita tidak terjebak pada paham <span class="hl-orange">Mujassimah</span>—yakni keyakinan sesat yang menyamakan Zat Allah berjisim, berbentuk, atau berupa seperti makhluk.</p>
+  <blockquote><i>“Tidak ada sesuatu pun yang serupa dengan Dia, dan Dialah Yang Maha Mendengar lagi Maha Melihat.”</i><br><b>Al-Qur’an, QS. Asy-Syura: 11</b></blockquote>
+  <blockquote><i>“Dan tidak ada seorang pun yang setara dengan Dia.”</i><br><b>Al-Qur’an, QS. Al-Ikhlas: 4</b></blockquote>
+  <h3>Memahami Wahdatul Wujud dalam Tauhid Murni</h3>
+  <p>Makna <span class="hl-pink">Wahdatul Wujud</span> yang lurus dalam <span class="hl-gold">tauhid murni</span> bukanlah penggabungan dua wujud (wujud makhluk dan wujud Tuhan) menjadi satu. Secara bahasa, <b>Wahdah</b> berarti <i>satu</i> dan <b>Wujud</b> berarti <i>ada</i>. Artinya, <span class="hl-yellow">wujud satu-satunya yang hakiki ada hanyalah Allah semata</span>.</p>
+  <p>Sebagaimana ditegaskan dalam Surah Al-Ikhlas, Allahlah yang dahulu ada pada azali, sekarang ada, dan akan terus ada selamanya tanpa satu pun makhluk yang menyertai keberadaan-Nya secara mandiri.</p>
+  <blockquote><i>“Katakanlah: Dialah Allah, Yang Maha Esa. Allah adalah Tuhan yang bergantung kepada-Nya segala sesuatu. Dia tiada beranak dan tidak pula diperanakkan. Dan tidak ada seorang pun yang setara dengan Dia.”</i><br><b>Al-Qur’an, QS. Al-Ikhlas: 1–4</b></blockquote>
+  <blockquote><i>“Dialah Yang Awal dan Yang Akhir, Yang Zahir dan Yang Batin.”</i><br><b>Al-Qur’an, QS. Al-Hadid: 3</b></blockquote>
+  <h3>Tauhid Murni: Bukan Hulul, Ittihad, Maupun Manunggaling Kawula Gusti</h3>
+  <p>Kajian ini adalah <span class="hl-gold">tauhid murni</span>—bukan paham <b>hulul</b> (Tuhan menitis ke dalam hamba), bukan <b>ittihad</b> (hamba melebur menyatu dengan Tuhan), bukan <b>wahdatul wujud</b> dalam arti penyatuan dua zat, dan bukan <b>manunggaling kawula gusti</b> sebagaimana disalahpahami oleh sebagian orang.</p>
+  <p>Ungkapan para ulama kasyaf seperti <span class="hl-blue">Ibnu Arabi, Syekh Siti Jenar, Abu Mansur Al-Hallaj, dan Abu Yazid Al-Bustami</span> sering disalahartikan oleh mereka yang hanya menangkap bunyi kata secara zahir. Padahal, ungkapan tersebut adalah <span class="hl-pink">bahasa rasa (rohani)</span> untuk menafikan keakuan makhluk agar tidak ada wujud lain yang diakui selain Allah semata. Sejatinya bukan hamba yang mampu mengenal Tuhan dengan kekuatannya sendiri, melainkan Allahlah yang memperkenalkan diri-Nya melalui batin hamba-Nya.</p>
+  <blockquote><i>“Segala sesuatu akan binasa, kecuali wajah-Nya.”</i><br><b>Al-Qur’an, QS. Al-Qasas: 88</b></blockquote>
+  <blockquote><i>“Semua yang ada di bumi itu akan binasa. Dan tetap kekal wajah Tuhanmu yang mempunyai kebesaran dan kemuliaan.”</i><br><b>Al-Qur’an, QS. Ar-Rahman: 26–27</b></blockquote>`
+},
+{
+  t:"Mengunci Kaji, Bertemu Tuhan & Penutup",
+  k:"Bagian 10 • Diam dalam Paham, Fana dari Keakuan & Al-Qur'an Qadim",
+  h:"Mengunci Kaji, Kapan Bertemu Tuhan & Penutup Al-Qur'an yang Qadim",
+  c:LEGEND+`<h3>Mengunci Kaji: Diam di Dalam Paham dan Kesadaran</h3>
+  <p>Apabila seseorang telah sampai pada pengenalan akan Allah yang Awal, Akhir, Zahir, dan Batin, maka berlakulah <span class="hl-gold">keluh lidah</span>—yakni pemahaman yang tidak lagi dapat dilukiskan dengan kata-kata. Cukuplah diingat, disadari, dan <span class="hl-yellow">diam di dalam paham</span> (bukan sekadar diam membisu tanpa ilmu, melainkan diam dalam kedalaman iman dan kesadaran).</p>
+  <p>Jika Zat Allah dibicarakan secara serampangan, dikhawatirkan pikiran akan membayangkan bentuk dan rupa makhluk. Karena itu, ilmu hakikat disampaikan secara bertingkat dan beradab melalui sanad yang jelas: dari <span class="hl-gold">Allah</span> kepada kekasih-Nya <span class="hl-blue">Nabi Muhammad SAW</span>, diteruskan kepada para <span class="hl-green">Waliyullah</span>, kemudian kepada <span class="hl-pink">Guru-Guru Mursyid</span>, hingga sampai kepada jemaah dan umat.</p>
+  <blockquote><i>“Tidak ada sesuatu pun yang serupa dengan Dia.”</i><br><b>Al-Qur’an, QS. Asy-Syura: 11</b></blockquote>
+  <blockquote><i>“Tafakkaru fi khalqillah, wa la tafakkaru fi dzatillah.”</i><br><b>Hadis</b> — <span class="hl-green">“Berpikirlah tentang ciptaan Allah, dan jangan memikirkan hakikat Zat Allah.”</span></blockquote>
+  <h3>Kapan Kita Bertemu dengan Tuhan?</h3>
+  <p>Kita baru dikatakan benar-benar bertemu dengan Allah apabila telah sirna rasa <span class="hl-pink">keakuan</span> dan kesadaran diri yang merasa wujud, mampu, serta berkuasa sendiri. Pada titik fana itulah tersingkap pertemuan hakiki dengan Allah SWT.</p>
+  <p>Sebagaimana kaidah agung yang diajarkan para ulama tasawuf:</p>
+  <blockquote><i>“Antal mautu qablal mautu.”</i><br><b>Kaidah Tasawuf</b> — <span class="hl-gold">“Matikanlah (keakuan) dirimu sebelum datang kematianmu yang sebenarnya.”</span></blockquote>
+  <blockquote><i>“Tiap-tiap yang berjiwa akan merasakan mati.”</i><br><b>Al-Qur’an, QS. Al-Ankabut: 57</b></blockquote>
+  <blockquote><i>“Hai jiwa yang tenang. Kembalilah kepada Tuhanmu dengan hati yang puas lagi diridhai-Nya.”</i><br><b>Al-Qur’an, QS. Al-Fajr: 27–28</b></blockquote>
+  <h3>Penutup Kajian: Membaca Al-Qur’an yang Qadim</h3>
+  <p>Inilah hakikat <span class="hl-gold">Al-Qur’an yang Qadim</span>—kitab suci yang terbentang pada batang tubuh manusia, yang tidak memiliki baris harakat, tidak bertitik, dan tidak berhuruf tinta, namun nyata terbaca oleh mata batin.</p>
+  <p>Inilah Al-Qur’an yang berjalan dalam kehidupan kita sehari-hari. Bacalah kitab dirimu sendiri (<span class="hl-pink">kitab nafsiah</span>). Barang siapa pandai membaca dan <span class="hl-green">menghisab dirinya sendiri</span> semasa di dunia, ia akan berjalan dalam cahaya petunjuk Tuhan; sebaliknya, siapa yang membutakan mata hatinya dari mengenal diri akan tersesat dalam kegelapan.</p>
+  <h3>Penutup Kajian & Salam Perpisahan</h3>
+  <p>Demikianlah seluruh rangkaian kajian yang dapat saya sampaikan pada malam hari ini. Semoga setiap ilmu yang kita renungkan bersama menjadi <span class="hl-yellow">cahaya penerang bagi batin kita, meluruskan tauhid kita, serta membawa keberkahan</span> yang dapat kita amalkan dalam kehidupan sehari-hari.</p>
+  <p>Saya <b>Deka Sonjaya</b>, mengucapkan terima kasih yang tulus atas perhatian, waktu, dan kelapangan hati <span class="hl-green">saudaraku semua</span>. Mohon maaf atas segala kekhilafan dalam penyampaian.</p>
+  <blockquote><i>Wassalamu’alaikum warahmatullahi wabarakatuh.</i><br><b>Deka Sonjaya • Modern Spiritual</b></blockquote>`
+}
+];
+
+const opening=document.getElementById('opening'), main=document.getElementById('main'), wrap=document.getElementById('slideWrap'), toc=document.getElementById('toc'), tocList=document.getElementById('tocList');
+const audio=document.getElementById('audio'), seek=document.getElementById('seek'), curTime=document.getElementById('curTime'), durTime=document.getElementById('durTime'), playBtn=document.getElementById('playBtn'), prevBtn=document.getElementById('prevBtn'), nextBtn=document.getElementById('nextBtn'), speedBtn=document.getElementById('speedBtn'), progressBar=document.getElementById('progressBar'), slideKicker=document.getElementById('slideKicker'), slideCount=document.getElementById('slideCount'), audioLabel=document.getElementById('audioLabel');
+let idx=0, speeds=[1,1.25,1.5,2], speedIdx=0, isSeeking=false;
+
+slides.forEach((s,i)=>{
+  const el=document.createElement('article'); el.className='slide'+(i===0?' active':''); el.dataset.i=i;
+  el.innerHTML=`<div class="slide-img-box"><img src="slide${i+1}.jpg" alt="Slide ${i+1}" onerror="if(this.dataset.triedBg){this.style.display='none';}else{this.dataset.triedBg='1';this.src='background.jpg';}"><div class="slide-img-badge">Slide ${i+1} • ${s.t}</div></div><div class="slide-text"><h2>${s.h}</h2>${s.c}</div>`;
+  wrap.appendChild(el);
+  const b=document.createElement('button'); b.className='toc-item'+(i===0?' active':''); b.innerHTML=`<span class="toc-num">${i+1}</span><span>${s.t}<small>${s.k}</small></span>`;
+  b.onclick=()=>{closeToc(); goTo(i,true);};
+  tocList.appendChild(b);
+});
+
+const slideEls=[...wrap.querySelectorAll('.slide')], tocItems=[...tocList.querySelectorAll('.toc-item')];
+function fmt(s){ if(!isFinite(s)) return '0:00'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function render(){ slideEls.forEach((el,i)=>el.classList.toggle('active',i===idx)); tocItems.forEach((el,i)=>el.classList.toggle('active',i===idx)); slideKicker.textContent=slides[idx].k; slideCount.textContent=(idx+1)+' / '+slides.length; progressBar.style.width=((idx+1)/slides.length*100)+'%'; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; const txt=wrap.querySelector('.slide.active .slide-text'); if(txt) txt.scrollTop=0; }
+function playAudio(auto=true){ const file=`slide${idx+1}.mp3`; if(audio.dataset.file!==file){ audio.src=file; audio.dataset.file=file; seek.value=0; curTime.textContent='0:00'; durTime.textContent='0:00'; } audioLabel.textContent=file; audio.playbackRate=speeds[speedIdx]; if(auto){ audio.play().catch(()=>{ playBtn.textContent='▶'; }); } playBtn.textContent='⏸'; }
+function goTo(i, autoplay=true){ idx=Math.max(0,Math.min(slides.length-1,i)); render(); playAudio(autoplay); }
+function next(){ if(idx<slides.length-1) goTo(idx+1,true); }
+function prev(){ if(idx>0) goTo(idx-1,true); }
+
+async function goFullscreen(){
+  try{
+    const el=document.documentElement;
+    if(!document.fullscreenElement && !document.webkitFullscreenElement){
+      if(el.requestFullscreen) await el.requestFullscreen();
+      else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if(el.msRequestFullscreen) el.msRequestFullscreen();
+    }
+  }catch(e){}
+}
+
+document.getElementById('enterBtn').onclick=async()=>{
+  await goFullscreen();
+  opening.classList.remove('active'); main.classList.add('active'); idx=0; render(); playAudio(true);
+};
+document.getElementById('logoHome').onclick=async()=>{
+  audio.pause(); playBtn.textContent='▶'; closeToc();
+  await goFullscreen();
+  main.classList.remove('active'); opening.classList.add('active'); window.scrollTo(0,0);
+};
+document.getElementById('tocBtn').onclick=()=>{ toc.classList.add('open'); document.getElementById('tocBtn').classList.add('active'); const activeToc=tocList.querySelector('.toc-item.active'); if(activeToc) activeToc.scrollIntoView({block:'nearest'}); };
+function closeToc(){ toc.classList.remove('open'); document.getElementById('tocBtn').classList.remove('active'); }
+document.getElementById('closeToc').onclick=closeToc;
+toc.onclick=(e)=>{ if(e.target===toc) closeToc(); };
+prevBtn.onclick=prev; nextBtn.onclick=next;
+playBtn.onclick=()=>{ if(audio.paused){ audio.play().catch(()=>{}); playBtn.textContent='⏸'; } else { audio.pause(); playBtn.textContent='▶'; } };
+speedBtn.onclick=()=>{ speedIdx=(speedIdx+1)%speeds.length; audio.playbackRate=speeds[speedIdx]; speedBtn.textContent=speeds[speedIdx]+'x'; };
+audio.addEventListener('timeupdate',()=>{ if(!isSeeking && audio.duration){ seek.value=(audio.currentTime/audio.duration)*100; curTime.textContent=fmt(audio.currentTime); durTime.textContent=fmt(audio.duration); }});
+audio.addEventListener('loadedmetadata',()=>{ durTime.textContent=fmt(audio.duration); });
+audio.addEventListener('ended',()=>{ if(idx<slides.length-1) next(); else { playBtn.textContent='▶'; }});
+audio.addEventListener('play',()=>playBtn.textContent='⏸');
+audio.addEventListener('pause',()=>playBtn.textContent='▶');
+seek.addEventListener('input',()=>{ isSeeking=true; if(audio.duration){ const v=(seek.value/100)*audio.duration; curTime.textContent=fmt(v); }});
+seek.addEventListener('change',()=>{ if(audio.duration){ audio.currentTime=(seek.value/100)*audio.duration; } isSeeking=false; });
+
+let sx=0, sy=0;
+wrap.addEventListener('touchstart',e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+wrap.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>70 && Math.abs(dy)<60){ if(dx<0) next(); else prev(); } },{passive:true});
+document.addEventListener('keydown',e=>{ if(!main.classList.contains('active')) return; if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); if(e.key===' ') { e.preventDefault(); playBtn.click(); } if(e.key==='Escape') closeToc(); });
+
+render();
+</script>
+</body>
+</html>
